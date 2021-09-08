@@ -3,15 +3,6 @@ class Emitter:
     
     Example usage::
 
-        from sevent import Emitter 
-        import time
-        
-        def callback(message):
-            print(message)
-        
-        def do_something():
-            time.sleep(1)
-
         event = Emitter() 
         event.on('ready', callback)
         do_something()
@@ -36,7 +27,7 @@ class Emitter:
             self.callbacks[event_name].append(callback)
 
     def emit(self, event_name, *args, **kwargs):
-        """It emits an event, and calls the corresponding callback function
+        """It emits an event, and calls the corresponding callback function.
         :param event_name: str, name of the event.
         """
         if self.callbacks is not None and event_name in self.callbacks:

@@ -1,8 +1,7 @@
 # Simple Event Emitter
-Simple event emitter without dependencies.
+Simple event emitter without third party dependencies, easily usable in your projects.
 
 ## EXAMPLE
---------
 ```
 from sevent import Emitter 
 import time
@@ -19,5 +18,4 @@ do_something()
 event.emit('ready', 'Finished!')
 ```
 ## LICENSE
---------
 MIT
