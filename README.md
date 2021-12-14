@@ -2,7 +2,7 @@
 Simple event emitter without third party dependencies, easily usable in your projects.
 
 ## EXAMPLE
-```
+```python
 from sevent import Emitter 
 import time
 
