@@ -11,6 +11,7 @@ class Emitter:
     """
     def __init__(self, *args, **kwargs):
         self.callbacks = None
+        self.emitterIsEnabled = True
 
     def on(self, eventName:str="", callback=None):
         """It sets the callback functions.
@@ -31,13 +32,14 @@ class Emitter:
 
         :param eventName: name of the event.
         """
-        if self.callbacks is not None and len(eventName) > 0:
-            if eventName in self.callbacks:
-                for callback in self.callbacks[eventName]:
-                    if callback.__code__.co_argcount > 0:
-                        callback(*args, **kwargs)
-                    else:
-                        callback()
+        if self.emitterIsEnabled:
+            if self.callbacks is not None and len(eventName) > 0:
+                if eventName in self.callbacks:
+                    for callback in self.callbacks[eventName]:
+                        if callback.__code__.co_argcount > 0:
+                            callback(*args, **kwargs)
+                        else:
+                            callback()
 
     def clearEvent(self, eventName:str):
         """It clears the callbacks associated to a specific event name.
@@ -50,3 +52,11 @@ class Emitter:
     def clearAllEvents(self):
         """It clears all events."""
         self.callbacks = None
+
+    def disableEvents(self):
+        """It disables emit function."""
+        self.emitterIsEnabled = False
+    
+    def enableEvents(self):
+        """It enables emit function."""
+        self.emitterIsEnabled = True
